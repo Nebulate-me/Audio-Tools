@@ -1,0 +1,26 @@
+﻿{
+  "name": "com.nebulateme.audiotools",
+  "version": "1.0.0",
+  "displayName": "Audio Tools",
+  "description": "A set of useful Sound and Music management tools for Unity",
+  "unity": "2020.3",
+  "unityRelease": "42f1",
+  "documentationUrl": "https://github.com/Nebulate-me/Audio-Tools",
+  "changelogUrl": "https://github.com/Nebulate-me/Audio-Tools",
+  "licensesUrl": "https://github.com/Nebulate-me/Audio-Tools/blob/main/LICENSE",
+  "dependencies": {
+  },
+  "git-dependencies": [
+    "https://github.com/Nebulate-me/Unity-Utilities.git"
+  ],
+  "keywords": [
+    "audio",
+    "management",
+    "unity"
+  ],
+  "author": {
+    "name": "Nebulate.me",
+    "email": "admin@nebulate.me",
+    "url": "https://nebulate.me"
+  }
+}
