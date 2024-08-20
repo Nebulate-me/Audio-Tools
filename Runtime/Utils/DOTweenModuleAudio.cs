@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.Audio; // Required for AudioMixer
 
 #pragma warning disable 1591
-namespace DG.Tweening
+namespace DG.Tweening.Custom
 {
 	public static class DOTweenModuleAudio
     {
