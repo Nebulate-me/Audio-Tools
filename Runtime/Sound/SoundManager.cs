@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 
 namespace AudioTools.Sound
 {
-    public class SoundManager<TSoundType> : ISoundManager<TSoundType>, IInitializable where TSoundType : Enum, IEquatable<TSoundType>
+    public class SoundManager<TSoundType> : ISoundManager<TSoundType>, IInitializable where TSoundType : Enum
     {
         private const float DefaultThrottlingInterval = 0.05f;
         private readonly Dictionary<int, SoundSource> allActiveSounds = new();
