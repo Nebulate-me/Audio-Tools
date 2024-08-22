@@ -194,11 +194,14 @@ namespace AudioTools.Sound
             soundSource.onStopped.AddListener(OnSoundStopped);
             allActiveSounds.Add(soundId, soundSource);
             soundSource.Play(delay);
+
             return soundId;
         }
 
         private void OnSoundStopped(int soundId)
         {
+            Debug.LogWarning($"OnSoundStopped: {soundId}");
+            
             if (!allActiveSounds.TryGetValue(soundId, out var value))
                 return;
 
