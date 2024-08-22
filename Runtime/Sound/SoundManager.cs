@@ -200,8 +200,6 @@ namespace AudioTools.Sound
 
         private void OnSoundStopped(int soundId)
         {
-            Debug.LogWarning($"OnSoundStopped: {soundId}");
-            
             if (!allActiveSounds.TryGetValue(soundId, out var value))
                 return;
 
