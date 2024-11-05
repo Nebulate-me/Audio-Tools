@@ -149,7 +149,7 @@ namespace AudioTools.Sound
                 value.Resume();
         }
 
-        private bool IsDefaultSoundType(TSoundType soundType)
+        protected virtual bool IsDefaultSoundType(TSoundType soundType)
         {
             return EqualityComparer<TSoundType>.Default.Equals(soundType, _defaultSoundType);
         }
@@ -162,7 +162,8 @@ namespace AudioTools.Sound
                 : soundSample.throttlingIntervalSeconds;
             var soundType = soundSample.soundType;
 
-            if (!IsDefaultSoundType(soundType) && playTimings[soundType] + throttlingInterval > Time.time)
+            if (!IsDefaultSoundType(soundType) &&
+                (playTimings[soundType] > 0 && (playTimings[soundType] + throttlingInterval) > Time.time))
                 return -1;
 
             if (!randomService.Chance(soundSample.probability))
