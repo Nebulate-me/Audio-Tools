@@ -7,6 +7,7 @@ namespace AudioTools.Sound
     {
         int Play(SoundSample<SoundType> soundPrefab);
         int Play(SoundSample<SoundType> soundPrefab, Transform transform, bool isTracking = false, float fadeInDuration = 0, float delay = 0);
+        void SetSoundPosition(int soundId, Vector3 position);
         void FadeOut(int soundId, float duration);
         void Mute(int soundId, float muteRate = 0.1f, float fadeDuration = 0f);
         void Unmute(int soundId, float fadeDuration = 0f);
