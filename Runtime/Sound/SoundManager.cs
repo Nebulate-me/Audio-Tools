@@ -34,7 +34,7 @@ namespace AudioTools.Sound
         [Inject]
         public void Initialize()
         {
-            soundsContainer = Object.FindObjectOfType<SoundsContainer>();
+            soundsContainer = Object.FindFirstObjectByType<SoundsContainer>();
         }
 
         public void StopAll()
@@ -75,6 +75,14 @@ namespace AudioTools.Sound
             float delay = 0)
         {
             return DoPlay(soundPrefab, transform, isTracking, fadeInDuration, delay);
+        }
+        
+        public void SetSoundPosition(int soundId, Vector3 position)
+        {
+            if (allActiveSounds.TryGetValue(soundId, out var value))
+            {
+                value.transform.position = position;
+            }
         }
 
         public int PlayMusic(SoundSample<TSoundType> musicPrefab, float fadeInDuration = 0f, float delay = 0f)

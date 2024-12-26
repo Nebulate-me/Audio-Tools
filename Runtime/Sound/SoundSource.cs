@@ -69,7 +69,9 @@ namespace AudioTools.Sound
                 audioSource.volume = 0;
 
                 audioSource.DOKill();
-                audioSource.DOFade(soundSample.volume, newFadeInDuration);
+                audioSource
+                    .DOFade(soundSample.volume, newFadeInDuration)
+                    .SetUpdate(true);
             }
         }
 
