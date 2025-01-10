@@ -15,6 +15,7 @@ namespace AudioTools.Sound
         private readonly Dictionary<int, SoundSource> allActiveSounds = new();
         private readonly Dictionary<int, bool> manualHandlingSounds = new();
         private readonly Dictionary<TSoundType, float> playTimings = new();
+        private readonly Dictionary<SoundSample<TSoundType>, float> playSampleTimings = new();
         private readonly Dictionary<int, AudioClip> audioClips = new();
         private readonly IPrefabPool prefabPool;
         private readonly IRandomService randomService;
@@ -168,16 +169,27 @@ namespace AudioTools.Sound
             var throttlingInterval = soundSample.throttlingIntervalSeconds == 0
                 ? DefaultThrottlingInterval
                 : soundSample.throttlingIntervalSeconds;
+
             var soundType = soundSample.soundType;
 
-            if (!IsDefaultSoundType(soundType) &&
-                (playTimings[soundType] > 0 && (playTimings[soundType] + throttlingInterval) > Time.time))
-                return -1;
+            if (soundSample.throttleBySample)
+            {
+                if (playSampleTimings.ContainsKey(soundSample) && playSampleTimings[soundSample] > 0 && (playSampleTimings[soundSample] + throttlingInterval) > Time.time)
+                    return -1;
+
+                playSampleTimings[soundSample] = Time.time;
+            }
+            else
+            {
+                if (!IsDefaultSoundType(soundType) &&
+                    (playTimings[soundType] > 0 && (playTimings[soundType] + throttlingInterval) > Time.time))
+                    return -1;
+            }
 
             if (!randomService.Chance(soundSample.probability))
                 return -1;
 
-            if (!IsDefaultSoundType(soundType))
+            if (!soundSample.throttleBySample && !IsDefaultSoundType(soundType))
                 playTimings[soundType] = Time.time;
 
             var instance = prefabPool.Spawn(soundSample.soundSource.gameObject, soundsContainer.transform);

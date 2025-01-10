@@ -35,5 +35,7 @@ namespace AudioTools.Sound
         
         [DefaultValue(0.05f)]
         public float throttlingIntervalSeconds;
+
+        public bool throttleBySample = false;
     }
 }
