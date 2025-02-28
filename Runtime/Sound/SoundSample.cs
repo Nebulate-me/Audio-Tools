@@ -15,6 +15,8 @@ namespace AudioTools.Sound
         public bool pauseWhenGameIsPaused = false;
         public int lastPlayedIndex = 0;
 
+        public bool randomizeClips;
+
         [Range(0, 1), DefaultValue(0)]
         public float pitchDelta = 0;
         
