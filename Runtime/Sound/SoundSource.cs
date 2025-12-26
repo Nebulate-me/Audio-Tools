@@ -39,10 +39,14 @@ namespace AudioTools.Sound
 
             var index = 0;
 
-            if (soundSample.audioClips.Length > 1)
+            if (!soundSample.randomizeClips && soundSample.audioClips.Length > 1)
             {
                 index = (soundSample.lastPlayedIndex + 1) % soundSample.audioClips.Length;
                 soundSample.lastPlayedIndex = index;
+            }
+            else if (soundSample.randomizeClips)
+            {
+                index = Random.Range(0, soundSample.audioClips.Length);
             }
 
             var pitch = soundSample.pitch;
