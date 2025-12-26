@@ -72,6 +72,11 @@ namespace AudioTools.Sound
             return Play(soundPrefab, null);
         }
 
+        public int Play(SoundSample<TSoundType> soundPrefab, float fadeInDuration)
+        {
+            return Play(soundPrefab, null, fadeInDuration: fadeInDuration);
+        }
+
         public int Play(SoundSample<TSoundType> soundPrefab, Transform transform, bool isTracking = false, float fadeInDuration = 0,
             float delay = 0)
         {

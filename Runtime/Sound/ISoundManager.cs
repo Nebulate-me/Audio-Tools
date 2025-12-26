@@ -6,6 +6,7 @@ namespace AudioTools.Sound
     public interface ISoundManager<SoundType> where SoundType : Enum
     {
         int Play(SoundSample<SoundType> soundPrefab);
+        int Play(SoundSample<SoundType> soundPrefab, float fadeInDuration);
         int Play(SoundSample<SoundType> soundPrefab, Transform transform, bool isTracking = false, float fadeInDuration = 0, float delay = 0);
         void SetSoundPosition(int soundId, Vector3 position);
         void FadeOut(int soundId, float duration);
